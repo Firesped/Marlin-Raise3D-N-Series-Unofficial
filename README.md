@@ -1,6 +1,6 @@
-# Raise3D N-Series version 1.2.1 (Marlin firmware version 1.1.0)
+version 1.2.1 (Marlin firmware version 1.1.0)
 
-Marlin firmware 1.1.0 updated for the raise3d N-Series printers protocle.
+Marlin firmware 1.1.0 updated for the  printers protocle.
 - In order to save memory, support for the reprap full graphics smart controller was disabled. as well as SDcard support. 
 - eeprom is enabled.
 - Primary configuration options are N1, N2, N2PLUS, DUAL, EXT0_STEPE and EXT1_STEPE. These options are all located at new the beginning of the configuration.h file.
