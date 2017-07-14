@@ -1,11 +1,14 @@
-# Raise3D N-Series Unofficial firmware version 1.2.1 (Marlin firmware version 1.1.0)
+# Raise3D N-Series Unofficial firmware version 1.2.2 (Marlin firmware version 1.1.0)
 
 ## Version History
 #### v1.2.2
-* Update for support of Filament Runout sensor and raisepack 0.9.3
+* Update for support of Raise3d Filament Runout Sensor code and raisepack 0.9.3
 
 #### v1.2.1
 * Updated M301 so motion controller gives the touchscreen the proper feedback for raisepack 0.9.2
+* Configured Z Probe to use X MAX
+* E0 Filament Runout Sensor is set to Y MAX
+* E1 Filament Runout Sensor is set to Z MAX
  
 #### v1.2.0 
 * Updated Settings for N-Series printers to the Official Marlin version 1.1.0. Previous firmware for N-Series was built on Official Marlin version 1.0.2
