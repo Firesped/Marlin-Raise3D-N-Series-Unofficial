@@ -95,7 +95,7 @@
 
 
 //=====Raise3D modified======//
-#define STRING_VERSION "1.2.1" //version information is set in the Version.h file.
+#define STRING_VERSION "1.2.2" //version information is set in the Version.h file.
 #define RAISE_VERSION STRING_VERSION
 #define N_SERIES_PROTOCLE
 #define N2PLUS //valid options N1, N2, N2PLUS
@@ -103,6 +103,7 @@
 #define DUAL  //Comment this line to get single head version firmware.
 #define EXT0_STEPE 94 // (left side) Set EXT0 STEPE here. default is 94. bondtech is 140.
 #define EXT1_STEPE 94 // (right side) Set EXT1 STEPE here. default is 94. bondtech is 140. bondtech QR universal is 476.5
+#define RAISE3D_FILAMENT_RUNOUT_SENSOR //Uncomment this line to enable raise3d filament runout sensor
 
 /**
  * Select which serial port on the board will be used for communication with the host.
@@ -791,6 +792,16 @@
   #define FIL_RUNOUT_INVERTING false // set to true to invert the logic of the sensor.
   #define ENDSTOPPULLUP_FIL_RUNOUT // Uncomment to use internal pullup for filament runout pins if the sensor is defined.
   #define FILAMENT_RUNOUT_SCRIPT "M600"
+#endif
+
+//Lack of material testing
+#if ENABLED(RAISE3D_FILAMENT_RUNOUT_SENSOR)
+  #define RAISE3D_E0_FILAMENT_SENSOR
+  #define RAISE3D_E1_FILAMENT_SENSOR
+  #define ENDSTOPPULLUP_E0_LACK
+  #define ENDSTOPPULLUP_E1_LACK
+  const bool E0_LACK_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
+  const bool E1_LACK_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 #endif
 
 //===========================================================================
