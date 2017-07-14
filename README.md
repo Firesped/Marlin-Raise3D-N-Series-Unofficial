@@ -1,16 +1,17 @@
 # Raise3D N-Series Unofficial firmware version 1.2.1 (Marlin firmware version 1.1.0)
 
-##Version History
-####v1.2.1
+## Version History
+#### v1.2.1
 * Updated M301 so motion controller gives the touchscreen the proper feedback for raisepack 0.9.2
  
-####v1.2.0 
+#### v1.2.0 
 * Updated Settings for N-Series printers to the Official Marlin version 1.1.0. Previous firmware for N-Series was built on Offical Marlin version 1.0.2
 * Added protocle so touchscreen can talk to the motion controler. The code for this is extensive.
 * Added code to printer status, making requirement of SDcard support, not needed. Saving memory and processing power.
-** SDSUPPORT NOT ENABLED
-** REPRAP FULL GRAPHIC SMART CONTROLLER not enabled. If you are using one of these devices now, you will need to configure a firmware for it.
+* SDSUPPORT NOT ENABLED
+* REPRAP FULL GRAPHIC SMART CONTROLLER not enabled. If you are using one of these devices now, you will need to configure a firmware for it.
 * EEPROM is enabled.
+
 - Primary configuration options are N1, N2, N2PLUS, DUAL, EXT0_STEPE and EXT1_STEPE. These options are all located at new the beginning of the configuration.h file.
  - N1, N2, N2PLUS set the print area
  - DUAL sets the number of extruders to 2 and enables distinctive e factors.
@@ -60,6 +61,9 @@ Arduino IDE now has support for folder hierarchies, so Marlin 1.2 will have a [h
 - [@MarlinFirmware](https://twitter.com/MarlinFirmware) on Twitter - Follow for news, release alerts, and tips & tricks. (Maintained by [@thinkyhead](/thinkyhead).)
 
 ## Credits
+
+The dev team for this firmware version built for Raise3D N-Series printer
+ - Michael Nolen [Firesped]- English 
 
 The current Marlin dev team consists of:
  - Roxanne Neufeld [@Roxy-3D] - English
