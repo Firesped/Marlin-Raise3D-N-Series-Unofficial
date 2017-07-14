@@ -5,8 +5,8 @@
 * Updated M301 so motion controller gives the touchscreen the proper feedback for raisepack 0.9.2
  
 #### v1.2.0 
-* Updated Settings for N-Series printers to the Official Marlin version 1.1.0. Previous firmware for N-Series was built on Offical Marlin version 1.0.2
-* Added protocle so touchscreen can talk to the motion controler. The code for this is extensive.
+* Updated Settings for N-Series printers to the Official Marlin version 1.1.0. Previous firmware for N-Series was built on Official Marlin version 1.0.2
+* Added protocol so touchscreen can talk to the motion controller. The code for this is extensive.
 * Added code to printer status, making requirement of SDcard support, not needed. Saving memory and processing power.
 * SDSUPPORT NOT ENABLED
 * REPRAP FULL GRAPHIC SMART CONTROLLER not enabled. If you are using one of these devices now, you will need to configure a firmware for it.
