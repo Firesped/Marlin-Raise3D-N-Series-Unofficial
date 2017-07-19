@@ -1,6 +1,9 @@
 # Raise3D N-Series Unofficial firmware version 1.2.1 (Marlin firmware version 1.1.0)
 
 ## Version History
+#### v1.2.1.1
+* Fixed a issue with the bed. I forgot to define the PIDTEMPBED.
+
 #### v1.2.1
 * Updated M301 so motion controller gives the touchscreen the proper feedback for raisepack 0.9.2
  
