@@ -1,4 +1,4 @@
-/**
+ /**
  * Marlin 3D Printer Firmware
  * Copyright (C) 2016 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
@@ -305,6 +305,12 @@ void MarlinSettings::postprocess() {
     EEPROM_WRITE(planner.min_travel_feedrate_mm_s);
     EEPROM_WRITE(planner.min_segment_time);
     EEPROM_WRITE(planner.max_jerk);
+    #if ENABLED(RAISE3D_FILAMENT_RUNOUT_SENSOR)
+      EEPROM_WRITE(planner.lack_materia_sensor_state[0]);
+      EEPROM_WRITE(planner.lack_materia_sensor_state[1]);
+      EEPROM_WRITE(planner.lack_materia_sensor_norm[0]);
+      EEPROM_WRITE(planner.lack_materia_sensor_norm[1]);
+    #endif
     #if !HAS_HOME_OFFSET
       const float home_offset[XYZ] = { 0 };
     #endif
@@ -691,6 +697,13 @@ void MarlinSettings::postprocess() {
       EEPROM_READ(planner.min_segment_time);
       EEPROM_READ(planner.max_jerk);
 
+      #if ENABLED(RAISE3D_FILAMENT_RUNOUT_SENSOR)
+        EEPROM_READ(planner.lack_materia_sensor_state[0]);
+        EEPROM_READ(planner.lack_materia_sensor_state[1]);
+        EEPROM_READ(planner.lack_materia_sensor_norm[0]);
+        EEPROM_READ(planner.lack_materia_sensor_norm[1]);
+      #endif
+
       #if !HAS_HOME_OFFSET
         float home_offset[XYZ];
       #endif
@@ -1044,6 +1057,21 @@ void MarlinSettings::reset() {
   planner.max_jerk[Y_AXIS] = DEFAULT_YJERK;
   planner.max_jerk[Z_AXIS] = DEFAULT_ZJERK;
   planner.max_jerk[E_AXIS] = DEFAULT_EJERK;
+
+  #if ENABLED(RAISE3D_FILAMENT_RUNOUT_SENSOR)
+    #if ENABLED(RAISE3D_E0_FILAMENT_SENSOR)
+      planner.lack_materia_sensor_state[0] = true;
+    #else
+      planner.lack_materia_sensor_state[0] = false;
+    #endif
+    #if ENABLED(RAISE3D_E1_FILAMENT_SENSOR)
+      planner.lack_materia_sensor_state[1] = true;
+    #else
+      planner.lack_materia_sensor_state[1] = false;
+    #endif      
+    planner.lack_materia_sensor_norm[0] = E0_LACK_ENDSTOP_INVERTING;
+    planner.lack_materia_sensor_norm[1] = E1_LACK_ENDSTOP_INVERTING;
+  #endif
 
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
     planner.z_fade_height = 0.0;

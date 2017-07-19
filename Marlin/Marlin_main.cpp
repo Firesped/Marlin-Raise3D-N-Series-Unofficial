@@ -9782,6 +9782,112 @@ void tool_change(const uint8_t tmp_extruder, const float fr_mm_s/*=0.0*/, bool n
 
   #endif //!MIXING_EXTRUDER || MIXING_VIRTUAL_TOOLS <= 1
 }
+/**
+ * F0-F1: Lack Material Sensor Command
+ *
+ *   S0      Turns Sensor off
+ *   S1      Turns Sensor On
+ *   N0     Sets sensor to Normally Open
+ *   N1     Sets Sensor to Normally Close
+ */
+
+inline void gcode_F0() {
+  SERIAL_ECHO_START;
+  SERIAL_ECHO("F0");
+    if (code_seen('S')) {
+      uint16_t sensor_set = code_value_ushort();
+      SERIAL_ECHO(" SETTING:");
+      SERIAL_ECHO(sensor_set);
+      if (sensor_set == 0) {
+        SERIAL_ECHO(" SET OFF ");
+        planner.lack_materia_sensor_state[0] = false;
+        }
+      else 
+        if (sensor_set == 1) {
+          SERIAL_ECHO(" SET ON ");        
+          planner.lack_materia_sensor_state[0] = true; 
+         }
+        else {
+          SERIAL_ECHOLN(MSG_INVALID_SENSOR_STATE);
+        }
+    }
+    if (code_seen('N')) {
+      uint16_t normally_set = code_value_ushort();
+      SERIAL_ECHO(" SETTING:");
+      SERIAL_ECHO(normally_set);
+      if (normally_set = 0) {
+        SERIAL_ECHO(" SET CLOSED ");
+        planner.lack_materia_sensor_norm[0]=false;
+        }
+      else
+        if (normally_set = 1) {
+          SERIAL_ECHO(" SET OPEN ");
+          planner.lack_materia_sensor_norm[0]=true;
+         }
+        else {
+          SERIAL_ECHOLN(MSG_INVALID_SENSOR_NORMAL);
+      }
+    }
+  SERIAL_ECHO(" STATE: ");
+  if (planner.lack_materia_sensor_state[0] = false) {
+    SERIAL_ECHO(MSG_SENSOR_STATE_OFF);
+  }
+  if (planner.lack_materia_sensor_state[0] = true) {
+    SERIAL_ECHO(MSG_SENSOR_STATE_ON);
+  }
+  SERIAL_ECHO(" NORMAL STATE: ");
+  if (planner.lack_materia_sensor_norm[0] = false) {
+    SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_CLOSED);
+  }
+  if (planner.lack_materia_sensor_norm[0] = true) {
+    SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_OPEN);
+  } 
+}
+
+inline void gcode_F1() {
+  SERIAL_ECHO_START;
+  SERIAL_ECHO("F1");
+    if (code_seen('S')) {
+      SERIAL_ECHO("SETTING STATE ");
+      uint16_t sensor_set = code_value_ushort();
+      if (sensor_set = 0) {
+        planner.lack_materia_sensor_state[1] = false;
+        }
+      if (sensor_set = 1) {
+        planner.lack_materia_sensor_state[1] = true; 
+        }
+      else {
+        SERIAL_ECHOLN(MSG_INVALID_SENSOR_STATE);
+      }
+    }
+    if (code_seen('N')) {
+      SERIAL_ECHO("SETTING NORMAL ");
+      uint16_t normally_set = code_value_ushort();
+      if (normally_set = 0) {
+        planner.lack_materia_sensor_norm[1]=false;
+        }
+      if (normally_set = 1) {
+        planner.lack_materia_sensor_norm[1]=true;
+        }
+      else {
+        SERIAL_ECHOLN(MSG_INVALID_SENSOR_NORMAL);
+      }
+    }
+  SERIAL_ECHO(" STATE: ");
+  if (planner.lack_materia_sensor_state[0] = false) {
+    SERIAL_ECHO(MSG_SENSOR_STATE_OFF);
+  }
+  if (planner.lack_materia_sensor_state[0] = true) {
+    SERIAL_ECHO(MSG_SENSOR_STATE_ON);
+  }
+  SERIAL_ECHO(" NORMAL STATE: ");
+  if (planner.lack_materia_sensor_norm[0] = false) {
+    SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_CLOSED);
+  }
+  if (planner.lack_materia_sensor_norm[0] = true) {
+    SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_OPEN);
+  } 
+}
 
 /**
  * T0-T3: Switch tool, usually switching extruders
@@ -10604,8 +10710,20 @@ void process_next_command() {
       case 999: // M999: Restart after being Stopped
         gcode_M999();
         break;
+
     }
     break;
+    case 'F': 
+      switch (codenum) { 
+        case 0:
+          gcode_F0();
+          break;
+        case 1:
+          gcode_F1();
+          break;
+      }
+      break;
+
 
     case 'T':
       gcode_T(codenum);

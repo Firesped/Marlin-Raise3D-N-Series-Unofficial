@@ -213,9 +213,9 @@ void Endstops::report_state() {
         if(lack_check>=10){
           lack_check=0;
           //Lack of material testing
-          #if ENABLED(RAISE3D_E0_FILAMENT_SENSOR)
+          if (planner.lack_materia_sensor_state[0] == true) {
             #if defined(E0_MATERIAL_LACK_PIN) && E0_MATERIAL_LACK_PIN > -1
-              if(READ(E0_MATERIAL_LACK_PIN)^E0_LACK_ENDSTOP_INVERTING){
+              if(READ(E0_MATERIAL_LACK_PIN)^planner.lack_materia_sensor_norm[0]){
                 if(lack_checked_e0==0){
                   SERIAL_PROTOCOLLN("Custom: Filament Error T0");
                   lack_checked_e0=1;
@@ -224,12 +224,12 @@ void Endstops::report_state() {
               else{
                 lack_checked_e0=0;
                 }
-            #endif
+          }
           #endif
-          #if ENABLED(RAISE3D_E1_FILAMENT_SENSOR)
-            #if defined(DUAL)
+          if (planner.lack_materia_sensor_state[1] == true) {
+            #if ENABLED(DUAL)
               #if defined(E1_MATERIAL_LACK_PIN) && E1_MATERIAL_LACK_PIN > -1
-                if(READ(E1_MATERIAL_LACK_PIN)^E1_LACK_ENDSTOP_INVERTING){
+                if(READ(E1_MATERIAL_LACK_PIN)^planner.lack_materia_sensor_norm[1]){
                   if(lack_checked_e1==0){
                     SERIAL_PROTOCOLLN("Custom: Filament Error T1");
                     lack_checked_e1=1;
@@ -240,7 +240,7 @@ void Endstops::report_state() {
                     }
               #endif
             #endif
-          #endif
+          }
         }
     #endif
     

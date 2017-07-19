@@ -172,6 +172,11 @@ class Planner {
       static float extruder_advance_k, advance_ed_ratio;
     #endif
 
+    #if ENABLED(RAISE3D_FILAMENT_RUNOUT_SENSOR)
+      static bool lack_materia_sensor_state[2];
+      static bool lack_materia_sensor_norm[2];
+    #endif
+    
   private:
 
     /**
