@@ -796,8 +796,9 @@
 
 //Lack of material testing
 #if ENABLED(RAISE3D_FILAMENT_RUNOUT_SENSOR)
-  #define RAISE3D_E0_FILAMENT_SENSOR
-  #define RAISE3D_E1_FILAMENT_SENSOR
+  //#define RAISE3D_DEBUG // this turns on debug code and potentially will crash the printer
+  //#define RAISE3D_E0_FILAMENT_SENSOR
+  //#define RAISE3D_E1_FILAMENT_SENSOR
   #define ENDSTOPPULLUP_E0_LACK
   #define ENDSTOPPULLUP_E1_LACK
   const bool E0_LACK_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
