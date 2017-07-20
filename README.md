@@ -3,6 +3,10 @@
 ## Version History
 #### v1.2.2
 * Update for support of Raise3d Filament Runout Sensor code and raisepack 0.9.3
+* Added new commands, F0 and F1. these control the filament runout sensors. Can turn them on and off and change states Normally Open or Normally Closed. Will save in EEPROM as well.
+
+#### v1.2.1.1
+* Fixed a issue with the bed. I forgot to define the PIDTEMPBED.
 
 #### v1.2.1
 * Updated M301 so motion controller gives the touchscreen the proper feedback for raisepack 0.9.2
