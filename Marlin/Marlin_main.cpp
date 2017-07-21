@@ -9815,12 +9815,12 @@ inline void gcode_F0() {
       uint16_t normally_set = code_value_ushort();
       SERIAL_ECHO(" SETTING:");
       SERIAL_ECHO(normally_set);
-      if (normally_set = 0) {
+      if (normally_set == 0) {
         SERIAL_ECHO(" SET CLOSED ");
         planner.lack_materia_sensor_norm[0]=false;
         }
       else
-        if (normally_set = 1) {
+        if (normally_set == 1) {
           SERIAL_ECHO(" SET OPEN ");
           planner.lack_materia_sensor_norm[0]=true;
          }
@@ -9829,17 +9829,17 @@ inline void gcode_F0() {
       }
     }
   SERIAL_ECHO(" STATE: ");
-  if (planner.lack_materia_sensor_state[0] = false) {
+  if (planner.lack_materia_sensor_state[0] == false) {
     SERIAL_ECHO(MSG_SENSOR_STATE_OFF);
   }
-  if (planner.lack_materia_sensor_state[0] = true) {
+  if (planner.lack_materia_sensor_state[0] == true) {
     SERIAL_ECHO(MSG_SENSOR_STATE_ON);
   }
   SERIAL_ECHO(" NORMAL STATE: ");
-  if (planner.lack_materia_sensor_norm[0] = false) {
+  if (planner.lack_materia_sensor_norm[0] == false) {
     SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_CLOSED);
   }
-  if (planner.lack_materia_sensor_norm[0] = true) {
+  if (planner.lack_materia_sensor_norm[0] == true) {
     SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_OPEN);
   } 
 }
@@ -9850,10 +9850,10 @@ inline void gcode_F1() {
     if (code_seen('S')) {
       SERIAL_ECHO("SETTING STATE ");
       uint16_t sensor_set = code_value_ushort();
-      if (sensor_set = 0) {
+      if (sensor_set == 0) {
         planner.lack_materia_sensor_state[1] = false;
         }
-      if (sensor_set = 1) {
+      if (sensor_set == 1) {
         planner.lack_materia_sensor_state[1] = true; 
         }
       else {
@@ -9863,10 +9863,10 @@ inline void gcode_F1() {
     if (code_seen('N')) {
       SERIAL_ECHO("SETTING NORMAL ");
       uint16_t normally_set = code_value_ushort();
-      if (normally_set = 0) {
+      if (normally_set == 0) {
         planner.lack_materia_sensor_norm[1]=false;
         }
-      if (normally_set = 1) {
+      if (normally_set == 1) {
         planner.lack_materia_sensor_norm[1]=true;
         }
       else {
@@ -9874,17 +9874,17 @@ inline void gcode_F1() {
       }
     }
   SERIAL_ECHO(" STATE: ");
-  if (planner.lack_materia_sensor_state[0] = false) {
+  if (planner.lack_materia_sensor_state[0] == false) {
     SERIAL_ECHO(MSG_SENSOR_STATE_OFF);
   }
-  if (planner.lack_materia_sensor_state[0] = true) {
+  if (planner.lack_materia_sensor_state[0] == true) {
     SERIAL_ECHO(MSG_SENSOR_STATE_ON);
   }
   SERIAL_ECHO(" NORMAL STATE: ");
-  if (planner.lack_materia_sensor_norm[0] = false) {
+  if (planner.lack_materia_sensor_norm[0] == false) {
     SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_CLOSED);
   }
-  if (planner.lack_materia_sensor_norm[0] = true) {
+  if (planner.lack_materia_sensor_norm[0] == true) {
     SERIAL_ECHOLN(MSG_SENSOR_NORMAL_STATE_OPEN);
   } 
 }
